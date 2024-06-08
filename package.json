@@ -1,0 +1,35 @@
+{
+  "name": "firevase",
+  "private": false,
+  "version": "0.0.1",
+  "description": "Smart way to integrate Vue and Firebase that skips most bureaucracy. It automatically generates relations between your firebase resources such as firestore entries and files, all base don a simple configuration file.",
+  "keywords": [
+    "vue",
+    "firebase",
+    "smart",
+    "files",
+    "relations"
+  ],
+  "main": "src/index.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guiMendel/firevase"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "vue-tsc && vite build"
+  },
+  "dependencies": {
+    "eventemitter3": "^5.0.1"
+  },
+  "peerDependencies": {
+    "vue": "^3.4.21",
+    "firebase": "^10.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0",
+    "vue-tsc": "^2.0.6"
+  }
+}
