@@ -1,13 +1,13 @@
-import { FirevaseClient } from '@/'
-import { forceRemoveRelation } from '@/relations'
-import { NonHasOneRelations } from '@/relations/internalTypes'
-import { HalfResource } from '@/resources'
+import { FirevaseClient } from '@/firevase'
 import {
   ConstrainRelationSettings,
   ManyToManyFrom,
   PathsFrom,
   PropertiesFrom,
-} from '@/types'
+} from '@/firevase/types'
+import { forceRemoveRelation } from '@/relations'
+import { NonHasOneRelations } from '@/relations/internalTypes'
+import { HalfResource } from '@/resources'
 
 export const deleteResourceRelations = async <
   C extends FirevaseClient,
