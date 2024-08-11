@@ -21,7 +21,7 @@ In Firevase, a "resource" is an entry in your Firestore. When you create your Fi
 Check out this example to get started:
 
 ```typescript
-import { fillFirevase } from '@/firevase'
+import { fillFirevase } from 'firevase'
 import { firebaseApp } from './firebase'
 import { Guild } from './guilds'
 import { Notification } from './notifications'

@@ -17,19 +17,22 @@
   },
   "type": "module",
   "scripts": {
-    "build": "vue-tsc && vite build"
+    "build": "vue-tsc && vite build",
+    "test": "vitest --coverage"
   },
   "dependencies": {
     "eventemitter3": "^5.0.1"
   },
   "peerDependencies": {
-    "vue": "^3.4.21",
-    "firebase": "^10.0.0"
+    "firebase": "^10.0.0",
+    "vue": "^3.4.21"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
+    "@vitest/coverage-v8": "^2.0.5",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
+    "vitest": "^2.0.5",
     "vue-tsc": "^2.0.6"
   }
 }
