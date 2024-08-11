@@ -1,6 +1,6 @@
-import { FirevaseClient } from '@/'
 import { firevaseEvents } from '@/events'
-import { PathsFrom } from '@/types'
+import { FirevaseClient } from '@/firevase'
+import { PathsFrom } from '@/firevase/types'
 import { collection, deleteDoc, doc } from 'firebase/firestore'
 
 /** Destroi um recurso para sempre */

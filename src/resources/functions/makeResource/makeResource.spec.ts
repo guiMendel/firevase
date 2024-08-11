@@ -1,5 +1,5 @@
-import { FirevaseClient } from '@/'
 import { CleanupManager } from '@/classes/CleanupManager'
+import { FirevaseClient } from '@/firevase'
 import { buildRelations } from '@/relations/buildRelations'
 import { DocumentSnapshot } from 'firebase/firestore'
 import { Mock } from 'vitest'

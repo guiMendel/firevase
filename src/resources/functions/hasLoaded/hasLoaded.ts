@@ -1,7 +1,7 @@
-import { FirevaseClient } from '@/'
 import { SyncableRef } from '@/classes/Syncable'
+import { FirevaseClient } from '@/firevase'
+import { FilesFrom, PathsFrom } from '@/firevase/types'
 import { Relations } from '@/relations'
-import { FilesFrom, PathsFrom } from '@/types'
 import { toRaw, toValue } from 'vue'
 import { Resource } from '../..'
 

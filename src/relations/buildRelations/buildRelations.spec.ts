@@ -1,7 +1,8 @@
 import { createDatabase, mockFantasyDatabase } from '@/tests/mock/backend'
 
-import { FirevaseClient } from '@/'
+import * as CleanupManagerNamespace from '@/classes/CleanupManager'
 import * as SyncableRefNamespace from '@/classes/Syncable'
+import { FirevaseClient } from '@/firevase'
 import { HalfResource, Resource } from '@/resources'
 import {
   cleanupManagerInterceptor,
@@ -14,7 +15,6 @@ import {
   mockKnight,
   mockLand,
 } from '@/tests/mock/fantasyVase'
-import * as CleanupManagerNamespace from '@/classes/CleanupManager'
 import { toValue } from 'vue'
 import { buildRelations } from '.'
 
@@ -828,7 +828,10 @@ describe('buildRelations', () => {
         relations.supervisedLands.value = [undefined as any]
         relations.supervisedLands.fetcher.trigger()
 
-        expect(relations.supervisedLands.fetcher).toHaveProperty('hasLoaded', true)
+        expect(relations.supervisedLands.fetcher).toHaveProperty(
+          'hasLoaded',
+          true
+        )
         expect(relations.supervisedLands).toHaveProperty('value', [])
       })
     })

@@ -4,10 +4,10 @@ import {
   mockFantasyDatabase,
 } from '@/tests/mock/backend'
 
-import { db } from '@/api/firebase'
+import { Knight, fantasyVase, mockKnight } from '@/tests/mock/fantasyVase'
+import { mockDb } from '@/tests/mock/firebase'
 import { collection, updateDoc } from 'firebase/firestore'
 import { updateResource } from '.'
-import { Knight, fantasyVase, mockKnight } from '@/tests/mock/fantasyVase'
 
 describe('updateResource', () => {
   beforeEach(applyDateMock)
@@ -29,7 +29,7 @@ describe('updateResource', () => {
     await updateResource(fantasyVase, 'knights', realId, properties)
 
     expect(updateDoc).toHaveBeenCalledWith(
-      { id: realId, path: collection(db, 'knights') },
+      { id: realId, path: collection(mockDb, 'knights') },
       {
         count: properties.count,
         name: properties.name,

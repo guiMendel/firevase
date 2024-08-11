@@ -1,7 +1,7 @@
+import { FirevaseClient } from '@/firevase'
 import { Mock } from 'vitest'
-import { requireDefinition } from '../requireDefinition'
 import { detectInvalidRemove } from '.'
-import { FirevaseClient } from '@/'
+import { requireDefinition } from '../requireDefinition'
 
 vi.mock('../requireDefinition')
 
@@ -66,6 +66,8 @@ describe('detectInvalidRemove', () => {
       },
     }
 
-    expect(detectInvalidRemoveCallback).toThrow('which would violate protected relation')
+    expect(detectInvalidRemoveCallback).toThrow(
+      'which would violate protected relation'
+    )
   })
 })

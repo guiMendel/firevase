@@ -1,9 +1,9 @@
 import { mockFantasyDatabase } from '@/tests/mock/backend'
 
-import { db } from '@/api/firebase'
 import { CleanupManager } from '@/classes/CleanupManager'
 import * as SyncableRefNamespace from '@/classes/Syncable'
 import { FantasyVase, fantasyVase, mockKnight } from '@/tests/mock/fantasyVase'
+import { mockDb } from '@/tests/mock/firebase'
 import {
   DocumentReference,
   Query,
@@ -126,7 +126,7 @@ describe('getResourceSynchronizer', () => {
       expect(mockSyncableRef).toHaveBeenCalledWith(
         fantasyVase,
         'knights',
-        doc(collection(db, 'knights'), id),
+        doc(collection(mockDb, 'knights'), id),
         cleanupManager
       )
     })
@@ -237,7 +237,7 @@ describe('getResourceSynchronizer', () => {
 
       syncList()
 
-      const expectedQuery = query(collection(db, 'knights')) as any
+      const expectedQuery = query(collection(mockDb, 'knights')) as any
 
       expect(mockSyncableRef).toHaveBeenCalledWith(
         fantasyVase,

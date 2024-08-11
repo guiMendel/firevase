@@ -1,5 +1,6 @@
-import { FirevaseClient } from '@/'
 import { CleanupManager } from '@/classes/CleanupManager'
+import { FirevaseClient } from '@/firevase'
+import { PathsFrom, PropertiesFrom } from '@/firevase/types'
 import {
   createResource,
   deleteResource,
@@ -7,7 +8,6 @@ import {
   getResourceSynchronizer,
   updateResource,
 } from '@/resources/functions'
-import { PathsFrom, PropertiesFrom } from '@/types'
 import { collection, doc } from 'firebase/firestore'
 import { onBeforeUnmount } from 'vue'
 

@@ -14,10 +14,10 @@ import {
   UnrefedResource,
   Uploadable,
 } from '@/resources'
+import { randomInt } from '@/utils/functions/randomRange'
 import { sample } from '@/utils/functions/sample'
 import { setUpFirebaseMocks } from './firebase'
 import type { MocksTable } from './mocksTable'
-import { randomInt } from '@/utils/functions/randomRange'
 
 setUpFirebaseMocks()
 

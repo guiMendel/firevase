@@ -13,6 +13,7 @@ import { Mock } from 'vitest'
 vi.mock('firebase/app')
 vi.mock('firebase/auth')
 vi.mock('firebase/firestore')
+vi.mock('firebase/storage')
 
 const firebaseConfig: FirebaseOptions = {
   apiKey: 'apiKey',

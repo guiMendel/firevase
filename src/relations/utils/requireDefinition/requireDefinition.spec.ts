@@ -1,4 +1,4 @@
-import { FirevaseClient } from '@/'
+import { FirevaseClient } from '@/firevase'
 import { requireDefinition } from '.'
 
 describe('requireDefinition', () => {

@@ -1,15 +1,15 @@
 import { applyDateMock, mockFantasyDatabase } from '@/tests/mock/backend'
 
+import * as UpdateResourceNamespace from '@/resources/functions/updateResource'
 import {
   fantasyVase,
   mockKing,
   mockKnight,
   mockLand,
 } from '@/tests/mock/fantasyVase'
+import * as FirestoreNamespace from 'firebase/firestore'
 import { setRelation } from '.'
 import { getRelation } from '..'
-import * as UpdateResourceNamespace from '@/resources/functions/updateResource'
-import * as FirestoreNamespace from 'firebase/firestore'
 
 const updateResource = UpdateResourceNamespace.updateResource
 

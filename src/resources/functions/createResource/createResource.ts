@@ -1,5 +1,5 @@
-import { FirevaseClient } from '@/'
-import { PathsFrom, PropertiesFrom } from '@/types'
+import { FirevaseClient } from '@/firevase'
+import { PathsFrom, PropertiesFrom } from '@/firevase/types'
 import { addDoc, collection, doc, setDoc } from 'firebase/firestore'
 import { Uploadable } from '../..'
 import { secureData } from '../secureData'

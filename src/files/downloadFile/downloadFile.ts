@@ -1,6 +1,6 @@
-import { FirevaseClient } from '@/'
+import { FirevaseClient } from '@/firevase'
+import { FilesFrom, PathsFrom } from '@/firevase/types'
 import { HalfResource } from '@/resources'
-import { FilesFrom, PathsFrom } from '@/types'
 import { getBlob } from 'firebase/storage'
 import { getFileRef } from '../getFileRef'
 

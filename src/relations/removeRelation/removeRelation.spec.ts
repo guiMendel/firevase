@@ -1,3 +1,4 @@
+import * as UpdateResourceNamespace from '@/resources/functions/updateResource'
 import { mockFantasyDatabase } from '@/tests/mock/backend'
 import {
   fantasyVase,
@@ -5,10 +6,9 @@ import {
   mockKnight,
   mockLand,
 } from '@/tests/mock/fantasyVase'
+import * as FirebaseNamespace from 'firebase/firestore'
 import { forceRemoveRelation, removeRelation } from '.'
 import { getRelation } from '..'
-import * as UpdateResourceNamespace from '@/resources/functions/updateResource'
-import * as FirebaseNamespace from 'firebase/firestore'
 
 const deleteDoc = FirebaseNamespace.deleteDoc
 

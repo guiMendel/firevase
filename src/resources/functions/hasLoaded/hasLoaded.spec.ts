@@ -1,12 +1,12 @@
 import { mockFantasyDatabase } from '@/tests/mock/backend'
 
-import { syncableRef } from '@/classes/Syncable'
-import { hasLoaded } from '.'
-import { fantasyVase, mockKnight } from '@/tests/mock/fantasyVase'
 import { CleanupManager } from '@/classes/CleanupManager'
+import { syncableRef } from '@/classes/Syncable'
+import { fantasyVase, mockKnight } from '@/tests/mock/fantasyVase'
+import { mockDb } from '@/tests/mock/firebase'
 import { collection, doc, query } from 'firebase/firestore'
-import { db } from '@/api/firebase'
 import { toRaw } from 'vue'
+import { hasLoaded } from '.'
 
 describe('hasLoaded', () => {
   it('only returns true when all refs are loaded', () => {
@@ -45,7 +45,7 @@ describe('hasLoaded', () => {
     const knight = syncableRef(
       fantasyVase,
       'knights',
-      doc(collection(db, 'knights'), knightId),
+      doc(collection(mockDb, 'knights'), knightId),
       new CleanupManager()
     )
 
@@ -72,7 +72,7 @@ describe('hasLoaded', () => {
     const knights = syncableRef(
       fantasyVase,
       'knights',
-      query(collection(db, 'knights')),
+      query(collection(mockDb, 'knights')),
       new CleanupManager()
     )
 

@@ -1,9 +1,9 @@
-import { FirevaseClient } from '@/'
 import { CleanupManager } from '@/classes/CleanupManager'
 import { syncableRef } from '@/classes/Syncable'
 import { Syncable } from '@/classes/Syncable/Syncable'
+import { FirevaseClient } from '@/firevase'
+import { PathsFrom } from '@/firevase/types'
 import type { HalfResource, Resource } from '@/resources/types'
-import { PathsFrom } from '@/types'
 import {
   DocumentReference,
   Query,

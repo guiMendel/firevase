@@ -1,7 +1,7 @@
-import { FirevaseClient } from '@/'
 import { CleanupManager } from '@/classes/CleanupManager'
 import { fileRef } from '@/classes/FileFetcher'
-import { PathsFrom } from '@/types'
+import { FirevaseClient } from '@/firevase'
+import { PathsFrom } from '@/firevase/types'
 import { getFileRef } from '../getFileRef'
 import { FilesRefs } from '../types'
 

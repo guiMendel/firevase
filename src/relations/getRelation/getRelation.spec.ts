@@ -1,6 +1,7 @@
 import { mockFantasyDatabase } from '@/tests/mock/backend'
 
 import { CleanupManager } from '@/classes/CleanupManager'
+import * as GetResourceGetterNamespace from '@/resources/functions/getResourceGetter'
 import {
   fantasyVase,
   mockKing,
@@ -8,7 +9,6 @@ import {
   mockLand,
 } from '@/tests/mock/fantasyVase'
 import { getRelation } from '.'
-import * as GetResourceGetterNamespace from '../../resources/functions/getResourceGetter'
 
 describe('getRelation', () => {
   beforeEach(() => {

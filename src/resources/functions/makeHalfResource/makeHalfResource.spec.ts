@@ -1,6 +1,6 @@
+import { applyDateMock } from '@/tests/mock/backend'
 import { mockDocumentSnapshot, mockQuerySnapshot } from '@/tests/mock/firebase'
 import { makeHalfResource } from '.'
-import { applyDateMock } from '@/tests/mock/backend'
 
 describe('makeHalfResource', () => {
   beforeEach(applyDateMock)

@@ -1,9 +1,9 @@
-import { FirevaseClient } from '@/'
+import { firevaseEvents } from '@/events'
+import { FirevaseClient } from '@/firevase'
+import { FilesFrom, PathsFrom } from '@/firevase/types'
 import { HalfResource } from '@/resources'
-import { FilesFrom, PathsFrom } from '@/types'
 import { uploadBytes } from 'firebase/storage'
 import { getFileRef } from '../getFileRef'
-import { firevaseEvents } from '@/events'
 
 export const setFile = <C extends FirevaseClient, P extends PathsFrom<C>>(
   source: HalfResource<C, P>,

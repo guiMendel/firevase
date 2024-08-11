@@ -4,8 +4,8 @@ import {
   mockFantasyDatabase,
 } from '@/tests/mock/backend'
 
-import { db } from '@/api/firebase'
 import { Knight, fantasyVase, mockKnight } from '@/tests/mock/fantasyVase'
+import { mockDb } from '@/tests/mock/firebase'
 import { addDoc, collection } from 'firebase/firestore'
 import { createResource } from '.'
 
@@ -24,7 +24,7 @@ describe('createResource', () => {
 
     createResource(fantasyVase, 'knights', properties as unknown as Knight)
 
-    expect(addDoc).toHaveBeenCalledWith(collection(db, 'knights'), {
+    expect(addDoc).toHaveBeenCalledWith(collection(mockDb, 'knights'), {
       count: properties.count,
       name: properties.name,
       createdAt: new Date().toJSON(),

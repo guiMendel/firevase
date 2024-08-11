@@ -1,6 +1,6 @@
-import { FirevaseClient } from '@/'
+import { FirevaseClient } from '@/firevase'
+import { PathsFrom, PropertiesFrom, RelationsFrom } from '@/firevase/types'
 import { HalfResource, updateResource } from '@/resources'
-import { PathsFrom, PropertiesFrom, RelationsFrom } from '@/types'
 import { collection, deleteDoc, doc } from 'firebase/firestore'
 import { HalfResourceRelations, RelationDefinitionFrom } from '..'
 import { getManyToManyTargetIds, getRelation } from '../getRelation'

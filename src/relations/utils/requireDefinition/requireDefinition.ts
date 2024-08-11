@@ -1,5 +1,5 @@
-import { FirevaseClient } from '@/'
-import { PathsFrom } from '@/types'
+import { FirevaseClient } from '@/firevase'
+import { PathsFrom } from '@/firevase/types'
 import { RelationDefinitionFrom, RelationType, Relations } from '../..'
 
 /** Gets the relation definition, and throws if it doesn't exist */

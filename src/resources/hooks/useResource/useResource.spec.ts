@@ -1,7 +1,7 @@
 import { mockCollection, mockFantasyDatabase } from '@/tests/mock/backend'
 
-import { FirevaseClient } from '@/'
 import { CleanupManager } from '@/classes/CleanupManager'
+import { FirevaseClient } from '@/firevase'
 import { mockDb } from '@/tests/mock/firebase'
 import { collection, doc } from 'firebase/firestore'
 import { Mock } from 'vitest'
