@@ -13,16 +13,16 @@ export abstract class Fetcher<T, V> {
   private updateTargetListeners: Array<(target: T | undefined) => void> = []
   private fetchListeners: Array<OnFetch<V>> = []
 
-  /** Gerencia o cleanup dos snapshot listeners */
+  /** Manages snapshot listeners cleanups */
   protected cleanup: CleanupManager = new CleanupManager()
 
-  /** O que esta sendo fetchado */
+  /** What will be fetched */
   protected _target: T | undefined
 
-  /** Se um fetch esta ativo ou se ja foi descartado */
+  /** Whether a fetch has been performed or disposed */
   protected state: 'ready-to-fetch' | 'fetched' | 'disposed' = 'ready-to-fetch'
 
-  /** Callback para executar sempre que houver um novo snapshot para este fetch */
+  /** Must be executed whenever a new snapshot for this fetch is available */
   protected emitFetch: OnFetch<V> = (snapshot, cleanupManager) => {
     this._mainFetchListener(snapshot, cleanupManager)
 
@@ -32,11 +32,10 @@ export abstract class Fetcher<T, V> {
 
   private _mainFetchListener: OnFetch<V>
 
-  /** Whether this fetcher has not received data from fetch yet */
+  /** Whether this fetcher has received data from fetch yet */
   protected _hasLoaded = false
 
   public get fetchState() {
-    // Para o publico, utilizamos o estado empty para indicar que nao ha target
     if (!this._target) return 'empty'
 
     return this.state
@@ -67,7 +66,7 @@ export abstract class Fetcher<T, V> {
     this.cleanup.onDispose(() => (this.state = 'disposed'))
   }
 
-  /** Inicia o fetch */
+  /** Performs the fetch */
   trigger = () => {
     for (const listener of this.beforeFetchListeners) listener()
 
@@ -84,20 +83,22 @@ export abstract class Fetcher<T, V> {
 
   /**
    * Implements how the subclass performs the fetch.
-   * It should call onFetch and set _hasLoaded
+   * It should call emitFetch and set _hasLoaded
    */
   protected abstract fetchImplementation: () => Promise<void>
 
-  /** Atualiza o alvo de fetch, e mantem o estado de fetch */
-  updateTarget = (newTarget?: T) => {
-    if (compareTargets(this._target, newTarget)) return
+  /** Updates what will be fetched and guarantees that the fetchState stays the same */
+  updateTarget = (
+    newTarget?: T,
+    options: { force: boolean } = { force: false }
+  ) => {
+    if (compareTargets(this._target, newTarget) && options.force == false)
+      return
 
     this._target = newTarget
 
-    // Vai manter este estado
     const previousState = this.state
 
-    // Descarta somente o cleanup manager interno
     this.cleanup.dispose()
 
     if (previousState === 'ready-to-fetch') this.state = 'ready-to-fetch'
@@ -107,7 +108,7 @@ export abstract class Fetcher<T, V> {
     for (const listener of this.updateTargetListeners) listener(newTarget)
   }
 
-  /** Reinicia o ref, resetando o alvo para undefined e o estado para 'empty' */
+  /** Resets all state and target */
   reset = () => {
     this.dispose()
 

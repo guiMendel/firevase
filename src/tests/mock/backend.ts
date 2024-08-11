@@ -254,6 +254,7 @@ export const createDatabase = <C extends FirevaseClient>(client: C) => {
       ) => {
         let id = (nextId++).toString()
 
+        // Ensure this id isn't taken yet
         if (database[path] != undefined)
           while (id in database[path]!) id = (nextId++).toString()
 
@@ -262,7 +263,7 @@ export const createDatabase = <C extends FirevaseClient>(client: C) => {
         return toSnapshot(path, id)
       }
 
-      const getDatabaseValue = async <P extends ResourcePath>(
+      const getDatabaseValue = async <P extends DatabaseTable>(
         path: P,
         id: string
       ) => {
@@ -273,7 +274,7 @@ export const createDatabase = <C extends FirevaseClient>(client: C) => {
           : parseTestSnapshot(path, id, value as Uploadable<P>)
       }
 
-      const requireDatabaseValue = async <P extends ResourcePath>(
+      const requireDatabaseValue = async <P extends DatabaseTable>(
         path: P,
         id: string
       ) => {

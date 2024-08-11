@@ -6,9 +6,11 @@ import { where } from 'firebase/firestore'
 import { getResourceGetter } from '.'
 import * as MakeResourceNamespace from '../makeResource'
 
+const filter = 'filter' as any
+
 describe('getResourceGetter', () => {
   beforeEach(() => {
-    vi.restoreAllMocks()
+    vi.restoreAllMocks().resetAllMocks()
   })
 
   describe('get', () => {
@@ -119,7 +121,7 @@ describe('getResourceGetter', () => {
         resourceLayersLimit,
       })
 
-      await getList()
+      await getList({ filter })
 
       expect(mockMakeResource).toHaveBeenCalledWith(
         fantasyVase,
@@ -127,7 +129,8 @@ describe('getResourceGetter', () => {
         'knights',
         resourceLayersLimit,
         cleanupManager,
-        []
+        [],
+        filter
       )
     })
   })

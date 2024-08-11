@@ -1,11 +1,12 @@
-import * as UpdateResourceNamespace from '@/resources/functions/updateResource'
-import { mockFantasyDatabase } from '@/tests/mock/backend'
 import {
   fantasyVase,
   mockKing,
   mockKnight,
   mockLand,
 } from '@/tests/mock/fantasyVase'
+
+import * as UpdateResourceNamespace from '@/resources/functions/updateResource'
+import { mockFantasyDatabase } from '@/tests/mock/backend'
 import * as FirebaseNamespace from 'firebase/firestore'
 import { forceRemoveRelation, removeRelation } from '.'
 import { getRelation } from '..'

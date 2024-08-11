@@ -20,6 +20,8 @@ vi.mock('../makeResource')
 
 const mockMakeResource = makeResource as Mock
 
+const resourceLayersLimit = 2
+
 describe('getResourceSynchronizer', () => {
   beforeEach(() => {
     vi.restoreAllMocks()
@@ -85,7 +87,7 @@ describe('getResourceSynchronizer', () => {
         DocumentReference
       >(fantasyVase, 'knights', 'empty-document', new CleanupManager())
 
-      sync(id, instanceRef as any)
+      sync(id, { existingRef: instanceRef as any })
 
       // Ensures it initializes properly
       expect(instanceRef.value).toStrictEqual(
@@ -121,13 +123,14 @@ describe('getResourceSynchronizer', () => {
         cleanupManager
       )
 
-      sync(id)
+      sync(id, { resourceLayersLimit })
 
       expect(mockSyncableRef).toHaveBeenCalledWith(
         fantasyVase,
         'knights',
         doc(collection(mockDb, 'knights'), id),
-        cleanupManager
+        cleanupManager,
+        { resourceLayersLimit }
       )
     })
   })
@@ -179,7 +182,7 @@ describe('getResourceSynchronizer', () => {
 
       expect(listRef.value).toStrictEqual([])
 
-      syncList([], listRef as any)
+      syncList([], { existingRef: listRef as any })
 
       // Verifica se inicializa adequadamente
       expect(listRef.value).toStrictEqual(await indexDatabaseValues('knights'))
@@ -235,7 +238,7 @@ describe('getResourceSynchronizer', () => {
         cleanupManager
       )
 
-      syncList()
+      syncList([], { resourceLayersLimit })
 
       const expectedQuery = query(collection(mockDb, 'knights')) as any
 
@@ -249,7 +252,8 @@ describe('getResourceSynchronizer', () => {
             JSON.parse(JSON.stringify(expectedQuery.filterer))
           ),
         },
-        cleanupManager
+        cleanupManager,
+        { resourceLayersLimit }
       )
     })
   })

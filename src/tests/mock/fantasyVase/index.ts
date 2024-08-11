@@ -1,3 +1,5 @@
+import '../firebase'
+
 export * from './fantasyVase'
 export * from './kings'
 export * from './knights'

@@ -26,21 +26,39 @@ describe('buildRelations', () => {
     vi.restoreAllMocks()
   })
 
-  it('raises if there are no relation settings', () => {
-    const client = {
-      relationSettings: undefined,
-    } as FirevaseClient
+  it('raises if resourceLayersLimit is 0', () => {
+    mockFantasyDatabase({})
+
+    const source = mockKnight()
 
     const callback = () =>
       buildRelations({
         cleanupManager: new CleanupManagerNamespace.CleanupManager(),
-        client,
-        previousValues: {},
-        source: {},
-        resourceLayersLimit: 1,
+        client: fantasyVase,
+        previousValues: { [source.id]: source },
+        resourceLayersLimit: 0,
+        source,
       })
 
-    expect(callback).toThrow('client has no relation settings')
+    expect(callback).toThrow(
+      `Impossible to build relations for ${source.resourcePath} — resourceLayersLimit is 0`
+    )
+  })
+
+  it('returns empty object when there is no relationSettings', () => {
+    const client = {
+      relationSettings: undefined,
+    } as FirevaseClient
+
+    const result = buildRelations({
+      cleanupManager: new CleanupManagerNamespace.CleanupManager(),
+      client,
+      previousValues: {},
+      source: {},
+      resourceLayersLimit: 1,
+    })
+
+    expect(result).toStrictEqual({})
   })
 
   describe('extracting relations', () => {

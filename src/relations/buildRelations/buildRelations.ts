@@ -268,12 +268,14 @@ const createManyToManyRelation = <
     targets.filter = (halfResource) => targetIds.includes(halfResource.id)
 
     // A query que retorna os alvos de fato
+    // Would be useful to add "where(documentId(), 'in', targetIds)" here, but the "in"
+    // operator only works with small arrays (something like length of 20)
     const targetsQuery = query(
       collection(client.db, definition.targetResourcePath as string)
     )
 
     // Atualiza o query dos targets
-    targets.fetcher.updateTarget(targetsQuery)
+    targets.fetcher.updateTarget(targetsQuery, { force: true })
   })
 
   // Associamos o cleanup pai ao bridgeSync
