@@ -1,5 +1,8 @@
-import { RelationDefinition, ResourceManyToManyTables } from '.'
-import { ConstrainManyToManySettings, ConstrainProperties } from '../firevase/types'
+import {
+  ConstrainManyToManySettings,
+  ConstrainProperties,
+} from '@/firevase/types'
+import { RelationDefinition, ResourceManyToManyTables } from '@/relations/types'
 
 /** Creates the hasMany helper for definition relations */
 export const makeHasMany = <

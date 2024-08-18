@@ -1,7 +1,7 @@
 {
-  "name": "firevase",
+  "name": "vue-firevase",
   "private": false,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Smart way to integrate Vue and Firebase that skips most bureaucracy. It automatically generates relations between your firebase resources such as firestore entries and files, all base don a simple configuration file.",
   "keywords": [
     "vue",
